@@ -296,6 +296,16 @@ RCT_CUSTOM_VIEW_PROPERTY(textRecognizerEnabled, BOOL, RNCamera)
     [view setupOrDisableTextDetector];
 }
 
+RCT_CUSTOM_VIEW_PROPERTY(cropScanAreaEnabled, BOOL, RNCamera) {
+  view.isCroppingScanArea = [RCTConvert BOOL:json];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(cropScanAreaSize, NSArray, RNCamera) {
+  NSArray* arr = [RCTConvert NSArray:json];
+  view.cropScanAreaPercentageWidth = [[arr objectAtIndex:0] doubleValue];
+  view.cropScanAreaPercentageHeight = [[arr objectAtIndex:1] doubleValue];
+}
+
 RCT_CUSTOM_VIEW_PROPERTY(captureAudio, BOOL, RNCamera)
 {
     [view setCaptureAudio:[RCTConvert BOOL:json]];
